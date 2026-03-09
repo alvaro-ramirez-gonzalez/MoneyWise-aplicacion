@@ -21,10 +21,7 @@ export class TransaccionService {
     this.cargarTransacciones();
   }
 
-  /**
-   * Carga las transacciones del storage local y filtra solo las 
-   * que pertenecen al usuario actual.
-   */
+ 
   public async cargarTransacciones() {
     const user = await this.authService.getCurrentUser();
     const todas: any[] = await this.storageService.get(this.STORAGE_KEY) || [];
@@ -79,7 +76,6 @@ export class TransaccionService {
     const index = todas.findIndex(t => t.id === id);
 
     if (index !== -1) {
-      // Mantenemos el ID y el userId original, solo actualizamos los datos
       todas[index] = { ...todas[index], ...actualizada };
       
       await this.storageService.set(this.STORAGE_KEY, todas);
