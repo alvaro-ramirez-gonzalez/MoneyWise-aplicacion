@@ -1,0 +1,37 @@
+<ion-content [fullscreen]="true">
+  <div class="auth-wrapper">
+    
+    <div class="header-section">
+      <div class="logo-container">
+        <ion-icon name="wallet"></ion-icon>
+      </div>
+      <h1 class="brand-name">MoneyWise</h1>
+      <p class="brand-tagline">Bienvenido de nuevo</p>
+    </div>
+
+    <div class="form-container">
+      <div class="input-group">
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="email" placeholder="CORREO ELECTRÓNICO" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="password" placeholder="CONTRASEÑA" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        class="action-button" 
+        (click)="onLogin()"
+        [disabled]="!loginValido()">
+        INICIAR SESIÓN
+      </ion-button>
+
+      <ion-button fill="clear" routerLink="/register" class="footer-link">
+        ¿ERES NUEVO? <span>CREA UNA CUENTA</span>
+      </ion-button>
+    </div>
+
+  </div>
+</ion-content>

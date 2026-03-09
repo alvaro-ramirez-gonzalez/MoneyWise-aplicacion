@@ -1,0 +1,79 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Movimientos</ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-searchbar 
+      placeholder="Buscar por descripción o categoría..." 
+      [(ngModel)]="textoBuscar" 
+      (ionInput)="filtrar()"
+      animated="true">
+    </ion-searchbar>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-segment [(ngModel)]="filtroTipo" (ionChange)="filtrar()">
+      <ion-segment-button value="all">
+        <ion-label>Todos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="income">
+        <ion-label>Ingresos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="expense">
+        <ion-label>Gastos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="transaccionesFiltradas.length === 0" class="ion-padding ion-text-center ion-margin-top">
+    <ion-icon name="search-outline" style="font-size: 48px; color: var(--ion-color-medium);"></ion-icon>
+    <h4 style="color: var(--ion-color-medium);">No hay coincidencias</h4>
+    <p>Prueba con otros términos o filtros.</p>
+  </div>
+
+  <ion-list *ngIf="transaccionesFiltradas.length > 0">
+    <ion-item-sliding *ngFor="let t of transaccionesFiltradas">
+      <ion-item lines="full" [routerLink]="['/tabs/transacciones/detalle', t.id]">
+        
+        <ion-icon 
+          slot="start" 
+          [name]="t.category | categoryIcon" 
+          [color]="t.type === 'income' ? 'success' : 'danger'"
+          style="font-size: 28px;">
+        </ion-icon>
+
+        <ion-label>
+          <h2 class="ion-text-capitalize">{{ t.category }}</h2>
+          <p>{{ t.date | date:'dd/MM/yyyy' }}</p> 
+          <small *ngIf="t.description" class="ion-text-wrap">{{ t.description }}</small>
+          
+          <ion-badge color="medium" *ngIf="t.image" mode="ios" style="display: block; width: fit-content; margin-top: 5px;">
+            <ion-icon name="attach-outline"></ion-icon> Foto adjunta
+          </ion-badge>
+        </ion-label>
+
+        <ion-note slot="end" 
+                  [color]="t.type === 'income' ? 'success' : 'danger'" 
+                  class="ion-text-bold" 
+                  style="font-size: 1.1em;">
+          {{ t.type === 'income' ? '+' : '-' }} {{ t.amount | currencyFormat }}
+        </ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="eliminar(t.id!)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="agregarTransaccion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

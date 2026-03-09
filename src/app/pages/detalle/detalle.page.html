@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/transacciones"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="abrirEdicion()">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="transaccion">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle class="ion-text-uppercase">{{ transaccion.type }}</ion-card-subtitle>
+      <ion-card-title>{{ transaccion.amount | currencyFormat }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label>
+            <p>Categoría</p>
+            <h2>{{ transaccion.category }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>
+            <p>Fecha</p>
+            <h2>{{ transaccion.date | date:'dd/MM/yyyy' }}</h2>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="transaccion.description">
+          <ion-label>
+            <p>Descripción</p>
+            <h2 class="ion-text-wrap">{{ transaccion.description }}</h2>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+
+      <div *ngIf="transaccion.image" class="ion-margin-top">
+        <p class="ion-padding-start">Comprobante:</p>
+        <img [src]="transaccion.image" style="width: 100%; border-radius: 8px; border: 1px solid #ddd;" />
+      </div>
+
+      <div class="ion-margin-top">
+        <ion-button expand="block" color="danger" fill="outline" (click)="confirmarEliminar()">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          Eliminar Movimiento
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

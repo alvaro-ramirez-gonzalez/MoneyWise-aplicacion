@@ -1,0 +1,26 @@
+.balance-card {
+  background: linear-gradient(135deg, var(--ion-color-primary), #6366f1);
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+  
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 10px 0;
+  }
+}
+
+.chart-container {
+  background: white;
+  padding: 15px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+ion-item {
+  --transition: 0.3s ease-in-out;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  --background: white;
+}

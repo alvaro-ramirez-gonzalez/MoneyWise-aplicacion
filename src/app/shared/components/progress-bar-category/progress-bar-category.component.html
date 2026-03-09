@@ -1,0 +1,16 @@
+<div class="category-item ion-margin-vertical">
+  <div class="category-info">
+    <ion-label>
+      <strong>{{ categoria }}</strong>
+    </ion-label>
+    <ion-text [color]="color">
+      {{ monto | currencyFormat }}
+    </ion-text>
+  </div>
+
+  <ion-progress-bar [value]="porcentaje" [color]="color"></ion-progress-bar>
+  
+  <div class="percentage-text ion-text-right">
+    <small>{{ (porcentaje * 100) | number:'1.0-0' }}%</small>
+  </div>
+</div>

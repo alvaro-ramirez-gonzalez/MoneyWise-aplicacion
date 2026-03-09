@@ -1,0 +1,49 @@
+<ion-content [fullscreen]="true">
+  <div class="auth-wrapper">
+    
+    <div class="back-button-container">
+      <ion-back-button defaultHref="/auth/login" text="" icon="chevron-back-outline"></ion-back-button>
+    </div>
+
+    <div class="header-section">
+      <div class="logo-container">
+        <ion-icon name="person-add"></ion-icon>
+      </div>
+      <h1 class="brand-name">Crea tu Cuenta</h1>
+      <p class="brand-tagline">Únete a la comunidad de MoneyWise</p>
+    </div>
+
+    <div class="form-container">
+      <div class="input-group">
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="text" placeholder="NOMBRE COMPLETO" [(ngModel)]="newUser.name"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="email" placeholder="CORREO ELECTRÓNICO" [(ngModel)]="newUser.email"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="password" placeholder="CONTRASEÑA" [(ngModel)]="newUser.password"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="custom-input">
+          <ion-input type="password" placeholder="CONFIRMAR CONTRASEÑA" [(ngModel)]="newUser.confirmPassword"></ion-input>
+        </ion-item>
+      </div>
+
+      <ion-button 
+        expand="block" 
+        (click)="onRegister()" 
+        class="action-button"
+        [disabled]="!formValido()">
+        COMENZAR AHORA
+      </ion-button>
+
+      <ion-button fill="clear" routerLink="/auth/login" class="footer-link">
+        ¿YA TIENES CUENTA? <span>INICIA SESIÓN</span>
+      </ion-button>
+    </div>
+    
+  </div>
+</ion-content>

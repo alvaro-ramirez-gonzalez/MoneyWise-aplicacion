@@ -1,0 +1,14 @@
+:root {
+  --ion-color-primary: #4338ca;         
+  --ion-color-secondary: #06b6d4;     
+  --ion-color-success: #10b981;         
+  --ion-color-danger: #ef4444;         
+  --ion-background-color: #f8fafc;      
+}
+
+
+ion-card {
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

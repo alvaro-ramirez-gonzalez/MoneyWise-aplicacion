@@ -1,0 +1,137 @@
+/* Contenedor Principal con Degradado Suave */
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background: #ffffff; 
+  padding: 40px 30px;
+  position: relative;
+
+  /* Botón de volver (Azul) */
+  .back-button-container {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    z-index: 10;
+    ion-back-button {
+      --color: #3b82f6; // Azul principal
+    }
+  }
+
+  /* Sección de Cabecera Centrada */
+  .header-section {
+    text-align: center;
+    margin-bottom: 50px;
+    width: 100%;
+
+    .logo-container {
+      width: 65px;
+      height: 65px;
+      /* Cambio a Azul Profundo con degradado */
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+
+      ion-icon {
+        font-size: 32px;
+        color: #ffffff;
+      }
+    }
+
+    .brand-name {
+      color: #1e3a8a; // Azul oscuro para el texto
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin: 0;
+    }
+
+    .brand-tagline {
+      color: #64748b;
+      font-size: 1rem;
+      margin-top: 8px;
+      font-weight: 400;
+    }
+  }
+
+  /* Cuerpo del Formulario */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+
+    /* Inputs de Línea Azul Minimalista */
+    .custom-input {
+      --background: transparent;
+      --padding-start: 0;
+      --highlight-height: 0;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #e2e8f0;
+      transition: all 0.4s ease;
+
+      &.ion-focused {
+        border-bottom-color: #2563eb; // Azul brillante al enfocar
+      }
+
+      ion-input {
+        font-size: 1.1rem;
+        font-weight: 500;
+        --color: #1e293b;
+        --placeholder-color: #94a3b8;
+      }
+    }
+
+    /* Botón Azul Sólido */
+    .action-button {
+      --background: #2563eb;
+      --background-activated: #1e40af;
+      --color: #fff;
+      --border-radius: 12px; // Bordes ligeramente redondeados para suavizar el azul
+      height: 60px;
+      margin-top: 35px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 8px 15px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Enlace inferior */
+    .footer-link {
+      --color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 25px;
+      text-align: center;
+      display: block;
+      font-weight: 600;
+
+      span {
+        text-decoration: none;
+        color: #2563eb; // Azul para resaltar el link
+        font-weight: 700;
+ 
+      }
+ .action-button[disabled] {
+  opacity: 0.5;
+  --background: #ccc;
+  pointer-events: none; /* Esto evita que el clic funcione aunque lo intentes */
+}
+    }
+  }
+.action-button {
+  /* ... tus estilos de azul ... */
+  
+  &[disabled] {
+    --background: #cbd5e1;
+    --color: #ffffff;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+}

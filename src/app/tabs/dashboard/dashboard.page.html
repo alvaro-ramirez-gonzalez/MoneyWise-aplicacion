@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>MoneyWise</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <div class="balance-container">
+    <app-dashboard-card 
+      class="balance-card"
+      titulo="SALDO DISPONIBLE" 
+      [monto]="saldoTotal" 
+      tipo="saldo" 
+      icono="wallet-outline">
+    </app-dashboard-card>
+  </div>
+
+  <ion-grid class="ion-no-padding ion-margin-top">
+    <ion-row>
+      <ion-col size="6">
+        <app-dashboard-card 
+          titulo="Ingresos" 
+          [monto]="totalIngresos" 
+          tipo="ingreso" 
+          icono="trending-up-outline">
+        </app-dashboard-card>
+      </ion-col>
+      <ion-col size="6">
+        <app-dashboard-card 
+          titulo="Gastos" 
+          [monto]="totalGastos" 
+          tipo="gasto" 
+          icono="trending-down-outline">
+        </app-dashboard-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card class="chart-container ion-margin-top" *ngIf="gastosPorCategoria.length > 0">
+    <ion-card-header>
+      <ion-card-subtitle color="dark">Distribución de Gastos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="height: 220px; position: relative;">
+        <canvas id="myChart"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="section-header ion-margin-top ion-padding-horizontal">
+    <ion-label><strong>Gastos por Categoría</strong></ion-label>
+  </div>
+
+  <div class="categories-list ion-margin-top">
+    <ion-item lines="none" *ngIf="gastosPorCategoria.length === 0" class="empty-state">
+      <ion-label color="medium" class="ion-text-center">
+        <small>No hay gastos registrados aún</small>
+      </ion-label>
+    </ion-item>
+
+    <app-progress-bar-category 
+      *ngFor="let cat of gastosPorCategoria"
+      [categoria]="cat.nombre"
+      [porcentaje]="cat.porcentaje"
+      [color]="cat.color"
+      [monto]="cat.total">
+    </app-progress-bar-category>
+  </div>
+
+  <ion-card [class]="saldoTotal >= 0 ? 'status-card success' : 'status-card danger'">
+    <ion-item lines="none" color="transparent">
+      <ion-icon [name]="saldoTotal >= 0 ? 'checkmark-circle' : 'alert-circle'" 
+                [color]="saldoTotal >= 0 ? 'success' : 'danger'" slot="start"></ion-icon>
+      <ion-label>
+        <h3 [style.color]="saldoTotal >= 0 ? 'var(--ion-color-success)' : 'var(--ion-color-danger)'">
+          {{ saldoTotal >= 0 ? 'Balance Saludable' : 'Revisa tus Gastos' }}
+        </h3>
+        <p>{{ saldoTotal >= 0 ? '¡Sigue así!' : 'Has gastado más de lo ingresado.' }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+  <div style="height: 90px;"></div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="abrirFormulario()" color="secondary" class="main-fab">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

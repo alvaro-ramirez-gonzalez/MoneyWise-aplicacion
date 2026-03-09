@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Mi Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <div class="profile-header ion-text-center ion-margin-top ion-margin-bottom">
+    <ion-avatar style="width: 100px; height: 100px; margin: 0 auto;">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Avatar" />
+    </ion-avatar>
+    <h2 class="ion-margin-top">{{ userEmail }}</h2>
+    <ion-badge color="secondary">Usuario Activo</ion-badge>
+  </div>
+
+  <ion-list inset="true" class="ion-margin-top" lines="inset">
+    <ion-list-header>
+      <ion-label>Preferencias</ion-label>
+    </ion-list-header>
+    
+    <ion-item button detail="true">
+      <ion-icon name="person-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Editar Perfil</ion-label>
+    </ion-item>
+    
+    <ion-item button detail="true">
+      <ion-icon name="notifications-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+    </ion-item>
+
+    <ion-item button detail="true">
+      <ion-icon name="shield-checkmark-outline" slot="start" color="primary"></ion-icon>
+      <ion-label>Seguridad y Privacidad</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding-horizontal ion-margin-top">
+    <ion-button 
+      expand="block" 
+      color="danger" 
+      fill="outline" 
+      class="ion-margin-top" 
+      (click)="logout()">
+      <ion-icon name="log-out-outline" slot="start"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+  <div class="ion-text-center ion-padding-top" style="margin-top: 20px;">
+    <p style="font-size: 0.8rem; color: var(--ion-color-medium);">
+      MoneyWise v1.0.0
+    </p>
+  </div>
+
+</ion-content>

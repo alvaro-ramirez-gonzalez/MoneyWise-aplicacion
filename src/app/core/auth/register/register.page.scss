@@ -1,0 +1,126 @@
+/* Contenedor Principal */
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  background: #ffffff;
+  padding: 40px 30px;
+  position: relative;
+
+  /* Botón de volver (Azul) */
+  .back-button-container {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    z-index: 10;
+    ion-back-button {
+      --color: #3b82f6;
+    }
+  }
+
+  /* Cabecera */
+  .header-section {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+
+    .logo-container {
+      width: 65px;
+      height: 65px;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+
+      ion-icon {
+        font-size: 32px;
+        color: #ffffff;
+      }
+    }
+
+    .brand-name {
+      color: #1e3a8a;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin: 0;
+    }
+
+    .brand-tagline {
+      color: #64748b;
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+  }
+
+  /* Formulario */
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+
+    .custom-input {
+      --background: transparent;
+      --padding-start: 0;
+      --highlight-height: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e2e8f0;
+      transition: all 0.4s ease;
+
+      &.ion-focused {
+        border-bottom-color: #2563eb;
+      }
+
+      ion-input {
+        font-size: 1.1rem;
+        font-weight: 500;
+        --color: #1e293b;
+      }
+    }
+
+    /* BOTÓN PRINCIPAL */
+    .action-button {
+      --background: #2563eb;
+      --background-activated: #1e40af;
+      --color: #fff;
+      --border-radius: 12px;
+      height: 60px;
+      margin-top: 30px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 15px rgba(37, 99, 235, 0.2);
+      transition: all 0.3s ease;
+
+      /* ESTADO DESHABILITADO (Corregido: fuera del footer-link) */
+      &[disabled] {
+        opacity: 0.5;
+        --background: #cbd5e1; // Gris azulado suave
+        --color: #ffffff;
+        pointer-events: none;
+        box-shadow: none;
+      }
+    }
+
+    /* Enlace inferior */
+    .footer-link {
+      --color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 25px;
+      text-align: center;
+      display: block;
+      font-weight: 600;
+
+      span {
+        color: #2563eb;
+        font-weight: 700;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+    }
+  }
+}
