@@ -6,16 +6,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryIconPipe implements PipeTransform {
   transform(category: string): string {
-    const icons: { [key: string]: string } = {
-      'Alimentación': 'restaurant-outline',
-      'Transporte': 'bus-outline',
-      'Vivienda': 'home-outline',
-      'Ocio': 'game-controller-outline',
-      'Salud': 'medkit-outline',
-      'Ingreso': 'cash-outline',
-      'Otros': 'ellipsis-horizontal-outline'
-    };
+    if (!category) return 'help-circle-outline';
 
-    return icons[category] || 'help-circle-outline';
+    const icons: { [key: string]: string } = {
+      'alimentación': 'restaurant-outline',
+      'transporte': 'bus-outline',
+      'vivienda': 'home-outline',
+      'ocio': 'game-controller-outline',
+      'salud': 'medkit-outline',
+      'salario': 'logo-usd', 
+      'ingreso': 'cash-outline',
+      'otros': 'ellipsis-horizontal-outline'
+    };
+    return icons[category.toLowerCase()] || 'help-circle-outline';
   }
 }

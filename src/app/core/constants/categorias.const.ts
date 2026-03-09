@@ -4,8 +4,8 @@ export const CATEGORIAS = [
   { id: 'vivienda', nombre: 'Vivienda', icono: 'home', color: 'danger' },
   { id: 'salud', nombre: 'Salud', icono: 'medkit', color: 'success' },
   { id: 'ocio', nombre: 'Ocio', icono: 'game-controller', color: 'tertiary' },
-  { id: 'salario', nombre: 'Salario', icono: 'cash', color: 'success' },
-  { id: 'otros', nombre: 'Otros', icono: 'help-circle', color: 'medium' }
+  { id: 'salario', nombre: 'Salario', icono: 'logo-usd', color: 'success' },
+  { id: 'otros', nombre: 'Otros', icono: 'help-circle ', color: 'medium' }
 ];
 
 export const TIPOS_TRANSACCION = [

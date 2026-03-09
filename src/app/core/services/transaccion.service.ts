@@ -61,7 +61,7 @@ export class TransaccionService {
     await this.storageService.set(this.STORAGE_KEY, todas);
     
     await this.cargarTransacciones();
-    this.presentarToast('Transacción guardada localmente', 'success');
+    this.presentarToast('Transacción guardada', 'success');
   }
 
   async eliminarTransaccion(id: string) {
