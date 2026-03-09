@@ -4,7 +4,6 @@ import { TransaccionService } from '../../core/services/transaccion.service';
 import { Transaccion } from '../../core/models/transaccion.model';
 import { TransactionFormComponent } from '../../shared/components/transaction-form/transaction-form.component';
 
-
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
@@ -20,7 +19,6 @@ export class DashboardPage implements OnInit {
   totalGastos = 0;
   gastosPorCategoria: any[] = [];
   transacciones: Transaccion[] = [];
-  
   
   private chart: Chart | undefined;
 
@@ -46,11 +44,11 @@ export class DashboardPage implements OnInit {
   private calcularTotales(transacciones: Transaccion[]) {
     this.totalIngresos = transacciones
       .filter(t => t.type === 'income')
-      .reduce((acc, t) => acc + t.amount, 0);
+      .reduce((acc, t) => acc + Number(t.amount), 0);
 
     this.totalGastos = transacciones
       .filter(t => t.type === 'expense')
-      .reduce((acc, t) => acc + t.amount, 0);
+      .reduce((acc, t) => acc + Number(t.amount), 0);
 
     this.saldoTotal = this.totalIngresos - this.totalGastos;
   }
@@ -61,7 +59,7 @@ export class DashboardPage implements OnInit {
 
     const totales: { [key: string]: number } = {};
     gastos.forEach(g => {
-      totales[g.category] = (totales[g.category] || 0) + g.amount;
+      totales[g.category] = (totales[g.category] || 0) + Number(g.amount);
     });
 
     this.gastosPorCategoria = Object.keys(totales).map(cat => ({
