@@ -11,7 +11,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegisterPage implements OnInit {
   
-  // Modelo de datos para el registro
   newUser = {
     name: '',
     email: '',
@@ -28,15 +27,12 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {}
 
-  /**
-   * Esta función es la que bloquea el botón en el HTML.
-   * Devuelve true solo cuando todos los campos son seguros.
-   */
+  
   formValido(): boolean {
     const { name, email, password, confirmPassword } = this.newUser;
     
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    // Requiere al menos una letra y un número
+   
     const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
     return (
@@ -49,7 +45,7 @@ export class RegisterPage implements OnInit {
   }
 
   async onRegister() {
-    // Doble verificación por seguridad
+    
     if (!this.formValido()) {
       await this.mostrarMensaje('Los datos no cumplen con los requisitos de seguridad.');
       return;
@@ -62,13 +58,12 @@ export class RegisterPage implements OnInit {
     await loader.present();
 
     try {
-      // Simulación de registro (Sustituir por llamada real al servicio)
+      
       await new Promise(resolve => setTimeout(resolve, 2000));
 
       await loader.dismiss();
       await this.mostrarMensaje('¡Cuenta creada con éxito!', 'success');
-      
-      // Redirigir al login
+ 
       this.router.navigate(['/auth/login']); 
 
     } catch (error) {
